@@ -4,7 +4,7 @@ name: vwChartDataUpdate
 
 on:
   schedule:
-    - cron: '13 19 * * 1-5' # ~19:13 UTC every weekday
+    - cron: '13 23 * * 1-5' # ~23:13 UTC every weekday
   workflow_dispatch:
   
 

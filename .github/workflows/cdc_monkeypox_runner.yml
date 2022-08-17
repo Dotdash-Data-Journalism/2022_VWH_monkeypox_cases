@@ -1,0 +1,42 @@
+# This is a basic workflow that only runs on push
+
+name: vwChartDataUpdate
+
+on:
+  schedule:
+    - cron: '13 19 * * 1-5' # ~19:13 UTC every weekday
+  workflow_dispatch:
+  
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8.9' # install the python version needed
+          
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install pipenv
+          pipenv install
+          
+      - name: execute py script 
+        run: pipenv run python update_monkeypox_cases.py
+        env: 
+          DW_API_KEY: ${{ secrets.DW_API_KEY }}
+        
+      - name: Add and commit
+        id: add_commit
+        uses: EndBug/add-and-commit@v8
+        with:
+          committer_name: Automated
+          committer_email: actions@users.noreply.github.com
+          message: "Latest data"

@@ -82,4 +82,4 @@ if cdc_monkeypox_latest_date > cdc_monkeypox_date:
     # Only select rows and columns we want
     vizDF = cdc_monkeypox_latest.loc[~(cdc_monkeypox_latest['Location'].isin(["Non-US Resident", "Puerto Rico", "Total"])), ['Location', 'Cases', 'Case Range', 'AsOf']].reset_index(drop=True)
 
-    updateChart('4SHvi', vizDF, cdc_monkeypox_latest_date, ACCESS_TOKEN)
+    updateChart('fEtay', vizDF, cdc_monkeypox_latest_date, ACCESS_TOKEN)

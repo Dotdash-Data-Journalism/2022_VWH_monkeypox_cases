@@ -20,9 +20,9 @@ def getMonkeypoxJSON(url):
     except urllib.error.URLError as err:
         print(f"Other error:{err}")
 
-    df['AsOf'] = df['AsOf'].str.extract(r'(\d{1,2}\s\w{3}\s\d{4})', expand=False)
+    df['AsOf'] = df['AsOf'].str.extract(r'(\w+\s\d{1,3}\s\d{4})', expand=False)
     
-    updateDate = datetime.strptime(df['AsOf'][0], "%d %b %Y").date()
+    updateDate = datetime.strptime(df['AsOf'][0], "%B %d %Y").date()
 
     return(df, updateDate)
 

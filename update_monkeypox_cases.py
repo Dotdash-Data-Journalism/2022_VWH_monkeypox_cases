@@ -63,6 +63,8 @@ cdc_monkeypox_latest_date = cdc_monkeypox_full[1]
 
 cdc_monkeypox_latest['AsOf'] = cdc_monkeypox_latest_date
 
+cdc_monkeypox_latest.rename(columns=lambda x: x.replace("_", " "), inplace=True)
+
 cdc_monkeypox = pd.read_csv(filepath_or_buffer="./visualizations/cdc_monkeypox_cases.csv", 
                             index_col= False,
                             header=0,

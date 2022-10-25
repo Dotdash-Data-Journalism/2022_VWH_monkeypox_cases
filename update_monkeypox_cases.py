@@ -56,7 +56,7 @@ def updateChart(dw_chart_id, dataSet, updateDate, dw_api_key):
 
     dw.publish_chart(chart_id=dw_chart_id)
 
-cdc_monkeypox_full = getMonkeypoxJSON("https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/USmap_counts.csv")
+cdc_monkeypox_full = getMonkeypoxJSON("https://www.cdc.gov/wcms/vizdata/poxvirus/monkeypox/data/USmap_counts/exported_files/USmap_counts.csv")
 
 cdc_monkeypox_latest = cdc_monkeypox_full[0]
 cdc_monkeypox_latest_date = cdc_monkeypox_full[1]
